@@ -77,3 +77,13 @@ button {
     background-color:darkred;
     color: white;
 }
+
+#f-to-c {
+    display: none;
+}
+
+@media only screen and (max-width: 480px) {
+    .container-button {
+        display: none;
+    }
+}
