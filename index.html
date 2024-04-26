@@ -17,42 +17,44 @@
                         untuk mendapatkan hasil konversi dalam bentuk Fahrenheit (&deg;F).</p>
                 </section>
     
-                <section class="section-celcius">
-                    <header>
-                        <h3>Celcius (&deg;C):</h3>
-                    </header>
+                <section id="option-celcius">                
+                    </section> <section class="section-celcius">
+                        <header>
+                            <h3>Celcius (&deg;C):</h3>
+                        </header>
                     
-                    <article>
-                        <textarea rows="1"></textarea>
-                        
-                        <div class="container-button">
-                            <button id="button-convert">Convert</button>
-                            <button id="button-reset">Reset</button>
-                            <button id="button-reverse">Reverse</button>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="section-fahrenheit">
-                    <header>
-                        <h3>Fahrenheit (&deg;F):</h3>
-                    </header>
+                        <article>
+                            <input type="text" id="celcius-input">
+                                                   
+                            <div class="container-button">
+                                <button onchange={convert} id="button-convert">Convert</button>
+                                <button id="button-reset">Reset</button>
+                                <button id="button-reverse">Reverse</button>
+                            </div>
+                        </article>
+                    </section>
+                
+                    <section class="section-fahrenheit">
+                        <header>
+                            <h3>Fahrenheit (&deg;F):</h3>
+                        </header>
                     
-                    <article>
-                        <textarea rows="1"></textarea>
-                    </article>
-                </section>
+                        <article>
+                            <input type="text" id="fahrenheit-input">
+                        </article>
+                    </section>
 
-                <section class="section-result">
-                    <header>
-                        <h3>Cara Kalkulasi:</h3>
-                    </header>
+                    <section class="section-result">
+                        <header>
+                            <h3>Cara Kalkulasi:</h3>
+                        </header>
                     
-                    <article>
-                        <textarea rows="1"></textarea>
-                    </article>
+                        <article>
+                            <input type="text" id="calculation-input">
+                        </article>
+                    </section>
                 </section>
-
+                
                 <section class="section-explanation">
                     <header>
                         <h3>Cara Konversi dari Celcius (&deg;C) ke Fahrenheit (&deg;F)</h3>
@@ -66,6 +68,7 @@
                            <p><h1 class="formula-s">S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 1,8) + 32</h1></p>
                     </article>
                 </section>
+            
 
             </section>
         </main>
