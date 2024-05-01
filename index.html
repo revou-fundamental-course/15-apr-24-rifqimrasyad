@@ -17,41 +17,84 @@
                         untuk mendapatkan hasil konversi dalam bentuk Fahrenheit (&deg;F).</p>
                 </section>
     
-                <section class="section-celcius">
-                    <header>
-                        <h3>Celcius (&deg;C):</h3>
-                    </header>
-                    
-                    <article>
-                        <textarea rows="1"></textarea>
+                <section id="option-celcius">
+                    <section class="section-celcius">
+                        <header>
+                            <h3>Celcius (&deg;C):</h3>
+                        </header>
                         
-                        <div class="container-button">
-                            <button id="button-convert">Convert</button>
-                            <button id="button-reset">Reset</button>
-                            <button id="button-reverse">Reverse</button>
-                        </div>
-                    </article>
+                        <article>
+                            <input type="text" id="celcius-input">
+                            <!-- <textarea rows="1"></textarea> -->
+                            
+                            <div class="container-button">
+                                <button onchange={convert} id="button-convert">Convert</button>
+                                <button id="button-reset">Reset</button>
+                                <button id="button-reverse">Reverse</button>
+                            </div>
+                        </article>
+                    </section>
+    
+                    <section class="section-fahrenheit">
+                        <header>
+                            <h3>Fahrenheit (&deg;F):</h3>
+                        </header>
+                        
+                        <article>
+                            <input type="text" id="farenhit-input">
+                            <!-- <textarea rows="1"></textarea> -->
+                        </article>
+                    </section>
+
+                    <section class="section-result">
+                        <header>
+                            <h3>Cara Kalkulasi:</h3>
+                        </header>
+                        
+                        <article>
+                            <input type="text" id="calculation-input">
+                            <!-- <textarea rows="1"></textarea> -->
+                        </article>
+                    </section>
                 </section>
 
-                <section class="section-fahrenheit">
-                    <header>
-                        <h3>Fahrenheit (&deg;F):</h3>
-                    </header>
-                    
-                    <article>
-                        <textarea rows="1"></textarea>
-                    </article>
-                </section>
+                <!-- <section id="option-farenhit">
+                    <section class="section-fahrenheit">
+                        <header>
+                            <h3>Fahrenheit (&deg;F):</h3>
+                        </header>
+                        
+                        <article>
+                            <input type="text" id="fahrenheit-input">
+                            
+                            <div class="container-button">
+                                <button onchange={convert} id="button-convert">Convert</button>
+                                <button id="button-reset">Reset</button>
+                                <button id="button-reverse">Reverse</button>
+                            </div>
+                        </article>
+                    </section>
+    
+                    <section class="section-fahrenheit">
+                        <header>
+                            <h3>Fahrenheit (&deg;F):</h3>
+                        </header>
+                        
+                        <article>
+                            <input type="text" id="farenhit-input">
+                        </article>
+                    </section>
 
-                <section class="section-result">
-                    <header>
-                        <h3>Cara Kalkulasi:</h3>
-                    </header>
-                    
-                    <article>
-                        <textarea rows="1"></textarea>
-                    </article>
-                </section>
+                    <section class="section-result">
+                        <header>
+                            <h3>Cara Kalkulasi:</h3>
+                        </header>
+                        
+                        <article>
+                            <input type="text" id="calculation-input">
+                        </article>
+                    </section>
+                </section> -->
 
                 <section class="section-explanation">
                     <header>
@@ -69,6 +112,67 @@
 
             </section>
         </main>
-        <script src="js/script.js"></script>
+        <script>
+            const buttonConvert = document.getElementById("button-convert");
+            buttonConvert.addEventListener("click", convert);
+
+            const buttonReverse = document.getElementById("button-reverse");
+            buttonReverse.addEventListener("click", convert);
+
+            const buttonReset = document.getElementById("button-reset");
+            buttonReset.addEventListener("click", reset);
+            
+            // let reverse = false
+
+            function convert(e) {
+                e.preventDefault();
+                const inputValueCelcius = parseInt(document.getElementById('celcius-input').value);
+                const inputValueFarenhit = parseInt(document.getElementById('farenhit-input').value);
+
+                if (!isNaN(inputValueCelcius)) {
+                    let fahrenheit = (inputValueCelcius * 9/5) + 32;
+                    let fixed = fahrenheit.toFixed(2)
+                    let calculation = `${inputValueCelcius} * (9/5) + 32\r\n= ${fixed}`
+                    document.getElementById("farenhit-input").value = fixed;
+                    document.getElementById("calculation-input").value = calculation;
+                } 
+                else if (!isNaN(inputValueFarenhit)) {
+                    let celcius = (inputValueFarenhit + 32) * 5/9;
+                    let fixed = celcius.toFixed(2)
+                    let calculation = `C = (${inputValueFarenhit} - 32) x 5/9\r\n= (" + ${celcius} + "-32) * 5/9`
+                    document.getElementById("celsius-input").value = fixed;
+                    document.getElementById("calculation-input").value = calculation;
+                }
+                else {
+                    document.getElementById("farenhit-input").value = "";
+                    document.getElementById("celcius-input").value = "";
+                    document.getElementById("calculation-input").value = "";
+                    alert("Cek input kembali yaa!")
+                }
+            }
+
+            function reverse(e) {
+                e.preventDefault();
+            
+                reverse = !reverse
+
+                if (reverse){
+                    document.getElementById("option-farenhit").style.display = "none";
+                    document.getElementById("option-celcius").style.display = "inline";
+                } else {
+                    document.getElementById("option-farenhit").style.display = "inline";
+                    document.getElementById("option-celcius").style.display = "none";
+                }
+            }
+
+            function reset(e) {
+                e.preventDefault();
+                 document.getElementById("farenhit-input").value = "";
+                 document.getElementById("celcius-input").value = "";
+                 document.getElementById("calculation-input").value = "";
+
+            }
+
+        </script>
     </body>
 </html>

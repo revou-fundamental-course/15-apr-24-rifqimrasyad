@@ -17,20 +17,30 @@ function reverse() {
     }
 }
 
-function convert() {
-    let inputNilai = document.getElementBy ('c-to-f-input')[0].id;
-    if (inputNilai === "input1") {
-        let Celcius = parseFloat(document.getElementById("input1").value);
-        if(!isNaN(Celcius)) {
-            let pilih = (Celcius * 9/5);
-            let fahrenheit = pilih + 32;
-            document.getElementById("input2").value = fahrenheit.toFixed(2);
+function convert(evt) {
+    evt.preventDefault();
+    console.log("masuk")
+    // let inputNilai = document.getElementBy ('c-to-f-input')[0].id;
+    let inputValueCelcius = document.getElementsByClassName('celcius-input').value;
 
-            let resultText = "Fahrenheit = (Celcius x 9/5) + 32\r\n= (" + Celcius + " x 9/5) + 32"
-            document.getElementById("result").textContent = resultText;
-        } else {
-            document.getElementById("result").textContent = "Tolong isi Suhu dahulu";
-        }
+
+    if (inputValueCelcius) {
+        console.log(inputValue)
+        // let Celcius = parseFloat(document.getElementById("input1").value);
+        // console.log("celcius", Celcius)
+
+        // if(!isNaN(Celcius)) {
+        //     let pilih = (Celcius * 9/5);
+        //     let fahrenheit = pilih + 32;
+        //     document.getElementById("input2").value = fahrenheit.toFixed(2);
+
+        //     let resultText = "Fahrenheit = (Celcius x 9/5) + 32\r\n= (" + Celcius + " x 9/5) + 32"
+        //     document.getElementById("result").textContent = resultText;
+        //     console.log(resultText)
+        // } else {
+        //     document.getElementById("result").textContent = "Tolong isi Suhu dahulu";
+        // }
+
     } else if (inputNilai === "input2") {
         let fahrenheit = parseFloat(document.getElementById("input2").value);
         if (isNaN(fahrenheit)) {
